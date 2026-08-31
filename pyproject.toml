@@ -1,0 +1,12 @@
+[project]
+name = "helpdesk-edu"
+version = "0.3.0"
+description = "HelpDesk EDU - Semana 9: consultas por relaciones (tecnico, categoria, estado)"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+dev-dependencies = ["pytest>=8.0.0"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
