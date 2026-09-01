@@ -1,14 +1,3 @@
-"""Clase de dominio Ticket.
-
-Cumple RNF-02 (atributos privados, acceso via metodos publicos),
-RF-07/RF-08 (creacion con id, estado OPEN y fecha automaticos) y
-RF-12/RF-13 (cambio de estado y prioridad con validacion de dominio).
-
-Extension Semana 9: se agrega __tecnico_asignado para poder responder
-"que tickets tiene asignados este tecnico?" (list_by_technician). Esta
-extension debe reflejarse en el diagrama de clases (RNF-09).
-"""
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -44,7 +33,7 @@ class Ticket:
         self.__fecha_creacion = datetime.now()
         self.__tecnico_asignado: Usuario | None = None
 
-    # -- getters (obtener_*) --------------------------------------------
+    
     def obtener_id(self) -> int:
         return self.__id
 
@@ -72,7 +61,7 @@ class Ticket:
     def obtener_tecnico_asignado(self) -> "Usuario | None":
         return self.__tecnico_asignado
 
-    # -- comportamiento del ciclo de vida (RF-12 / RF-13) -----------------
+    
     def cambiar_estado(self, estado: str) -> None:
         if estado not in Ticket.ESTADOS:
             raise ValueError(f"Estado de ticket invalido: {estado!r}")
@@ -83,7 +72,7 @@ class Ticket:
             raise ValueError(f"Prioridad invalida: {prioridad!r}")
         self.__prioridad = prioridad
 
-    # -- extension Semana 9: asignacion de tecnico ------------------------
+   
     def asignar_tecnico(self, tecnico: Usuario) -> None:
         if tecnico.obtener_rol() not in ("TECHNICIAN", "SUPERVISOR"):
             raise ValueError(

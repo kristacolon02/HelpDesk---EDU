@@ -1,9 +1,3 @@
-"""Clase de dominio Usuario.
-
-Cumple RNF-02 (atributos privados, acceso via metodos publicos) y
-RF-01/RF-02/RF-03 (registro con validaciones de correo y rol).
-"""
-
 from __future__ import annotations
 
 
@@ -27,7 +21,7 @@ class Usuario:
         self.__rol = rol
         self.__estado = estado
 
-    # -- getters (obtener_*) ------------------------------------------------
+
     def obtener_id(self) -> int:
         return self.__id
 
@@ -43,7 +37,7 @@ class Usuario:
     def obtener_estado(self) -> str:
         return self.__estado
 
-    # -- setters (cambiar_*) -------------------------------------------------
+    
     def cambiar_nombre(self, nombre: str) -> None:
         self.__nombre = nombre
 
