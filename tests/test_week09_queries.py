@@ -1,7 +1,4 @@
-"""Pruebas de las consultas del sistema HelpDesk EDU (Semana 9).
-
-Cada prueba demuestra que la consulta devuelve SOLAMENTE los tickets
-correctos, tal como exige la rubrica (Logica de consultas, 2.0 pts).
+"""Pruebas de las consultas del sistema HelpDesk EDU (week09).
 """
 
 from services.usuario_service import UsuarioService
@@ -9,7 +6,7 @@ from services.ticket_service import TicketService
 
 
 def crear_servicios():
-    """Arma un UsuarioService + TicketService limpios para cada prueba."""
+    
     usuario_service = UsuarioService()
     ticket_service = TicketService(usuario_service)
     return usuario_service, ticket_service

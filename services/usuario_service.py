@@ -1,10 +1,3 @@
-"""Servicio de usuarios: RF-01 a RF-06.
-
-Mantiene la lista de usuarios EN MEMORIA (RNF-01) y valida antes de
-crear o modificar objetos Usuario (RNF-02: el atributo privado nunca
-se toca directamente, solo a traves de metodos publicos).
-"""
-
 from __future__ import annotations
 
 from models.usuario import Usuario
@@ -18,7 +11,7 @@ class UsuarioService:
     def registrar(
         self, nombre: str, email: str, rol: str, estado: str = "ACTIVO"
     ) -> Usuario:
-        """RF-01/RF-02/RF-03: registra un usuario validando correo y rol."""
+        
         self.__validar(email, rol)
         usuario = Usuario(
             id=self.__contador, nombre=nombre, email=email, rol=rol, estado=estado
@@ -28,11 +21,11 @@ class UsuarioService:
         return usuario
 
     def listar(self) -> list[Usuario]:
-        """RF-04: lista todos los usuarios registrados."""
+        
         return list(self.__usuarios)
 
     def buscar_por_id(self, id: int) -> "Usuario | None":
-        """RF-05: busca un usuario por ID, devuelve None si no existe."""
+        
         for usuario in self.__usuarios:
             if usuario.obtener_id() == id:
                 return usuario
@@ -46,7 +39,7 @@ class UsuarioService:
         rol: "str | None" = None,
         estado: "str | None" = None,
     ) -> bool:
-        """RF-06: actualiza nombre/correo/rol/estado, conservando el ID."""
+        
         usuario = self.buscar_por_id(id)
         if usuario is None:
             return False
@@ -65,7 +58,7 @@ class UsuarioService:
         return self.buscar_por_id(id) is not None
 
     def __validar(self, email: str, rol: str) -> None:
-        """RF-02: correo obligatorio. RF-03: rol dentro de la lista permitida."""
+        
         if not email:
             raise ValueError("El correo electronico no puede estar vacio.")
         if rol not in Usuario.ROLES:
